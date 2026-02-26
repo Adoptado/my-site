@@ -6,20 +6,29 @@
     <link rel="icon" type="image/png" href="apapeture.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
-            padding: 0;
             background-color: #000;
             color: #fff;
             font-family: Arial, Helvetica, sans-serif;
+
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* MAIN CENTER AREA */
+        .main-content {
+            flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            padding: 20px;
         }
 
         .container {
@@ -81,7 +90,7 @@
         }
 
         button:hover {
-            background: #ff0000;
+            background: #074e11;
             color: #fff;
         }
 
@@ -96,30 +105,49 @@
         .back-link:hover {
             color: #fff;
         }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.8rem;
+            opacity: 0.5;
+            letter-spacing: 1px;
+        }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>Contact</h1>
+    <main class="main-content">
+        <div class="container">
+            <h1>Contact</h1>
 
-        <form action="https://formspree.io/f/xjgelkaz" method="POST">
-            
-            <label>
-                Your Email
-                <input type="email" name="email" required>
-            </label>
+            <form action="https://formspree.io/f/xjgelkaz" method="POST">
+                
+                <label>
+                    Your Email
+                    <input type="email" name="email" required>
+                </label>
 
-            <label>
-                Your Message
-                <textarea name="message" required></textarea>
-            </label>
+                <label>
+                    Your Message
+                    <textarea name="message" required></textarea>
+                </label>
 
-            <button type="submit">Send Message</button>
-        </form>
+                <button type="submit">Send Message</button>
+            </form>
 
-        <a href="index.html" class="back-link">← Back to Home</a>
-    </div>
+            <a href="index.html" class="back-link">← Back to Home</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>© <span id="year"></span> Adoptado Productions. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
 
 </body>
 </html>
