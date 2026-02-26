@@ -6,46 +6,64 @@
     <link rel="icon" type="image/png" href="apapeture.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Font Awesome for social icons -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
-            padding: 0;
             background-color: #000;
             color: #fff;
             font-family: Arial, Helvetica, sans-serif;
+
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* MAIN CENTERED SECTION */
+        .main-content {
+            flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
             text-align: center;
+            padding: 20px;
         }
 
         .container {
             max-width: 600px;
+            animation: fadeIn 2s ease-in-out;
         }
 
         img {
             max-width: 250px;
             height: auto;
             margin-bottom: 30px;
+            opacity: 0;
+            animation: logoFade 2s ease forwards;
         }
 
         h1 {
             font-size: 2rem;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             margin-bottom: 10px;
+            font-weight: 600;
         }
 
         p {
             font-size: 1.1rem;
-            opacity: 0.8;
+            opacity: 0.7;
+            letter-spacing: 2px;
         }
 
+        /* SOCIAL ICONS */
         .socials {
-            margin-top: 25px;
+            margin-top: 30px;
         }
 
         .socials a {
@@ -57,59 +75,106 @@
         }
 
         .socials a:hover {
-            color: #ff0000;
+            color: #074e11;
+            transform: scale(1.2);
         }
 
-        /* NEW CONTACT BUTTON STYLE */
+        /* CONTACT BUTTON */
         .contact-wrapper {
             margin-top: 40px;
         }
 
         .contact-btn {
             display: inline-block;
-            padding: 10px 28px;
+            padding: 12px 32px;
             border: 1px solid #fff;
             color: #fff;
             text-decoration: none;
-            letter-spacing: 2px;
-            font-size: 0.85rem;
-            transition: 0.3s ease;
+            letter-spacing: 3px;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
         }
 
         .contact-btn:hover {
             background: #fff;
             color: #000;
+            letter-spacing: 4px;
         }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.8rem;
+            opacity: 0.5;
+            letter-spacing: 1px;
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes logoFade {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Subtle cinematic glow */
+        h1::after {
+            content: "";
+            display: block;
+            width: 60px;
+            height: 2px;
+            background: #074e11;
+            margin: 15px auto 0;
+            opacity: 0.7;
+        }
+
     </style>
 </head>
 <body>
-    <div class="container">
-        <img src="apapeture.png" alt="Adoptado Productions Logo">
 
-        <h1>Adoptado Productions</h1>
-        <p><strong>Coming Soon</strong></p>
+    <main class="main-content">
+        <div class="container">
 
-        <div class="socials">
-            <a href="https://www.youtube.com/adoptadoproductions" target="_blank" aria-label="YouTube">
-                <i class="fab fa-youtube"></i>
-            </a>
-            <a href="https://www.instagram.com/adoptadoproductions" target="_blank" aria-label="Instagram">
-                <i class="fab fa-instagram"></i>
-            </a>
-            <a href="https://discord.gg/UPEADbBjzg" target="_blank" aria-label="Discord">
-                <i class="fa-brands fa-discord"></i>
-            </a>
-            <a href="mailto:adoptadoproductions@gmail.com" aria-label="Email">
-                <i class="fas fa-envelope"></i>
-            </a>
+            <img src="apapeture.png" alt="Adoptado Productions Logo">
+
+            <h1>Adoptado Productions</h1>
+            <p><strong>COMING SOON</strong></p>
+
+            <div class="socials">
+                <a href="https://www.youtube.com/adoptadoproductions" target="_blank" aria-label="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="https://www.instagram.com/adoptadoproductions" target="_blank" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://discord.gg/UPEADbBjzg" target="_blank" aria-label="Discord">
+                    <i class="fa-brands fa-discord"></i>
+                </a>
+                <a href="mailto:adoptadoproductions@gmail.com" aria-label="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+
+            <div class="contact-wrapper">
+                <a href="contact.html" class="contact-btn">
+                    CONTACT <i class="fa-solid fa-address-book"></i>
+                </a>
+            </div>
+
         </div>
+    </main>
 
-        <div class="contact-wrapper">
-            <a href="contact.html" class="contact-btn">CONTACT<i class="fa-solid fa-address-book"></i></a>
-        </div>
-    </div>
+    <footer>
+        <p>© <span id="year"></span> Adoptado Productions. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+
 </body>
 </html>
-
-
-
