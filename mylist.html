@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- If you're reading this just know Larry still sucks -->
+    <meta charset="UTF-8">
+    <title>My list | Adoptado Productions</title>
+    <link rel="icon" type="image/png" href="apapeture.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, Helvetica, sans-serif;
+
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* MAIN CENTERED SECTION */
+        .main-content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        h1 {
+            font-size: 2rem;
+            letter-spacing: 4px;
+            margin-bottom: 40px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        /* Subtle cinematic glow line */
+        h1::after {
+            content: "";
+            display: block;
+            width: 60px;
+            height: 2px;
+            background: #074e11;
+            margin: 15px auto 0;
+            opacity: 0.7;
+        }
+
+        .entry {
+            margin: 15px 0 5px 0;  /* reduced bottom margin */
+            padding: 10px 0;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .entry + p {
+            margin: 0 0 15px 0;   /* remove top margin */
+            font-size: 0.9rem;
+            opacity: 0.6;
+            letter-spacing: 1px;
+        }
+
+        .entry:hover {
+            color: #074e11;
+            letter-spacing: 5px;
+            opacity: 1;
+            transform: scale(1.05);
+        }
+
+        footer p {
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.8rem;
+            opacity: 0.5;
+            letter-spacing: 1px;
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .back-link {
+            margin-top: 25px;
+            display: block;
+            color: #aaa;
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
+
+        .back-link:hover {
+            color: #fff;
+        }
+
+    </style>
+</head>
+<body>
+
+    <main class="main-content">
+        <div class="container">
+            <h1>My list</h1>
+
+            <div class="entry">Larry</div>
+            <p>For spoiling John Cena turning heel</p>
+            <div class="entry">Justin</div>
+            <p>For saying the Lucha Brothers are washed</p>
+            <div><a href="https://www.adoptadoproductions.com/" class="back-link">← Back to Home</a></div>
+        </div>
+        
+    </main>
+
+    <footer>
+        <p>© <span id="year"></span> My last. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+
+</body>
+</html>
