@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweet Mini Postres</title>
+    <!-- Fuentes de Google: Quicksand para el texto general y Pacifico para detalles dulces -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Iconos (FontAwesome) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        pastel: {
+                            light: '#F0F9FF',   /* Azul muy claro / Fondo (sky-50) */
+                            soft: '#BAE6FD',    /* Azul acento suave (sky-200) */
+                            accent: '#38BDF8',  /* Azul vibrante para botones (sky-400) */
+                            cream: '#F8FAFC',   /* Blanco hueso/crema suave */
+                            navy: '#082F49'     /* Azul marino oscuro para texto (sky-900) */
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Quicksand', 'sans-serif'],
+                        cursive: ['Pacifico', 'cursive'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Estilos personalizados para animaciones suaves */
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(56, 189, 248, 0.3); /* Sombra azul claro */
+        }
+        @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+        .animate-blob {
+            animation: blob 7s infinite;
+        }
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+    </style>
+</head>
+<body class="bg-pastel-light text-pastel-navy font-sans flex flex-col min-h-screen">
+
+    <!-- Barra de Navegación -->
+    <nav class="bg-white/80 backdrop-blur-md fixed w-full z-50 top-0 shadow-sm transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="font-cursive text-3xl text-pastel-accent">
+                        <i class="fa-solid fa-cake-candles mr-2 text-xl"></i>Sweet Mini Postres
+                    </a>
+                </div>
+                
+                <!-- Enlaces Escritorio -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#inicio" class="text-pastel-navy hover:text-pastel-accent font-semibold transition-colors">Inicio</a>
+                    <a href="#catalogo" class="text-pastel-navy hover:text-pastel-accent font-semibold transition-colors">Catálogo</a>
+                    <a href="#contacto" class="text-pastel-navy hover:text-pastel-accent font-semibold transition-colors">Contacto</a>
+                    <a href="https://www.instagram.com/sweetminipostres30" target="_blank" class="bg-pastel-accent text-white px-5 py-2 rounded-full font-bold hover:bg-sky-500 shadow-md transition-colors flex items-center gap-2">
+                        <i class="fa-brands fa-instagram"></i> Instagram
+                    </a>
+                </div>
+
+                <!-- Botón Menú Móvil -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-pastel-navy hover:text-pastel-accent focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menú Móvil Desplegable -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-pastel-soft">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col items-center">
+                <a href="#inicio" class="block px-3 py-2 text-pastel-navy font-semibold hover:text-pastel-accent hover:bg-pastel-light rounded-md w-full text-center">Inicio</a>
+                <a href="#catalogo" class="block px-3 py-2 text-pastel-navy font-semibold hover:text-pastel-accent hover:bg-pastel-light rounded-md w-full text-center">Catálogo</a>
+                <a href="#contacto" class="block px-3 py-2 text-pastel-navy font-semibold hover:text-pastel-accent hover:bg-pastel-light rounded-md w-full text-center">Contacto</a>
+                <a href="https://www.instagram.com/sweetminipostres30" target="_blank" class="block mt-2 bg-pastel-accent text-white px-5 py-2 rounded-full font-bold w-[200px] text-center hover:bg-sky-500">
+                    <i class="fa-brands fa-instagram"></i> Instagram
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sección Hero (Inicio) -->
+    <header id="inicio" class="relative pt-20 pb-16 md:pt-32 md:pb-24 flex items-center justify-center min-h-[80vh] overflow-hidden">
+        <!-- Fondo con patrón/color -->
+        <div class="absolute inset-0 z-0 bg-pastel-cream opacity-50"></div>
+        <div class="absolute inset-0 z-0 flex justify-center items-center opacity-20 pointer-events-none">
+            <!-- Círculos decorativos de fondo en tonos azules -->
+            <div class="w-96 h-96 bg-pastel-accent rounded-full mix-blend-multiply filter blur-3xl opacity-60 translate-x-20 -translate-y-20 animate-blob"></div>
+            <div class="w-96 h-96 bg-pastel-soft rounded-full mix-blend-multiply filter blur-3xl opacity-60 -translate-x-20 translate-y-20 animate-blob animation-delay-2000"></div>
+        </div>
+
+        <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-10">
+            <span class="text-pastel-accent font-bold tracking-wider uppercase text-sm mb-4 block">Hecho con Amor</span>
+            <h1 class="text-5xl md:text-7xl font-cursive text-pastel-navy mb-6 leading-tight">
+                Endulzamos tus <br>momentos especiales
+            </h1>
+            <p class="mt-4 text-xl md:text-2xl text-pastel-navy/80 mb-10 font-medium">
+                Postres miniatura deliciosos y hermosos para cualquier ocasión.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <a href="#catalogo" class="bg-pastel-accent text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-sky-500 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 w-full sm:w-auto">
+                    Ver Catálogo
+                </a>
+                <a href="#contacto" class="bg-white text-pastel-accent border-2 border-pastel-accent px-8 py-4 rounded-full font-bold text-lg hover:bg-pastel-light shadow-md transition-all w-full sm:w-auto">
+                    Hacer un Pedido
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sección Catálogo -->
+    <section id="catalogo" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-cursive text-pastel-accent mb-4">Nuestro Catálogo</h2>
+                <div class="w-24 h-1 bg-pastel-soft mx-auto rounded-full"></div>
+                <p class="mt-6 text-lg text-pastel-navy/70 max-w-2xl mx-auto">
+                    Explora nuestra deliciosa variedad de postres. Cada pieza está elaborada y decorada a mano especialmente para ti.
+                </p>
+            </div>
+
+            <!-- Cuadrícula de Productos -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+                
+                <!-- Producto 1: Paletas de pastel -->
+                <div class="bg-pastel-light rounded-3xl overflow-hidden card-hover border border-pastel-soft/50">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1576718465545-c800fb741366?auto=format&fit=crop&w=800&q=80" alt="Paletas de pastel" class="w-full h-full object-cover">
+                        <div class="absolute top-4 right-4 bg-white/90 rounded-full p-2 text-pastel-accent shadow-sm">
+                            <i class="fa-solid fa-heart"></i>
+                        </div>
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-2xl font-bold text-pastel-navy mb-2 font-cursive">Paletas de pastel</h3>
+                        <p class="text-pastel-navy/70 text-sm">Bizcocho suave mezclado con betún, cubierto de chocolate y decorado a tu gusto.</p>
+                    </div>
+                </div>
+
+                <!-- Producto 2: Oreos cubiertas -->
+                <div class="bg-pastel-light rounded-3xl overflow-hidden card-hover border border-pastel-soft/50">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=800&q=80" alt="Oreos cubiertas de chocolate" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-2xl font-bold text-pastel-navy mb-2 font-cursive">Oreos cubiertas de chocolate</h3>
+                        <p class="text-pastel-navy/70 text-sm">Galletas Oreo sumergidas en chocolate premium con decoraciones temáticas.</p>
+                    </div>
+                </div>
+
+                <!-- Producto 3: Mini donas -->
+                <div class="bg-pastel-light rounded-3xl overflow-hidden card-hover border border-pastel-soft/50">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=800&q=80" alt="Mini donas" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-2xl font-bold text-pastel-navy mb-2 font-cursive">Mini donas</h3>
+                        <p class="text-pastel-navy/70 text-sm">Esponjosas y horneadas, glaseadas y decoradas con chispas, chocolate o tu diseño favorito.</p>
+                    </div>
+                </div>
+
+                <!-- Producto 4: Rice Krispies -->
+                <div class="bg-pastel-light rounded-3xl overflow-hidden card-hover border border-pastel-soft/50">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1548848221-0c2e497ed557?auto=format&fit=crop&w=800&q=80" alt="Rice Krispies decorados" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-2xl font-bold text-pastel-navy mb-2 font-cursive">Rice Krispies decorados</h3>
+                        <p class="text-pastel-navy/70 text-sm">Barritas crujientes de malvavisco y cereal, bañadas en chocolate y decoradas creativamente.</p>
+                    </div>
+                </div>
+
+                <!-- Producto 5: Palitos de pretzel -->
+                <div class="bg-pastel-light rounded-3xl overflow-hidden card-hover border border-pastel-soft/50">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1600326145359-3a4dc1dc7db0?auto=format&fit=crop&w=800&q=80" alt="Palitos de pretzel cubiertos de chocolate" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-2xl font-bold text-pastel-navy mb-2 font-cursive">Palitos de pretzel cubiertos de chocolate</h3>
+                        <p class="text-pastel-navy/70 text-sm">La combinación perfecta entre lo salado y lo dulce. Bañados en delicioso chocolate.</p>
+                    </div>
+                </div>
+
+                <!-- Tarjeta de Llamado a la Acción -->
+                <div class="bg-pastel-cream rounded-3xl overflow-hidden border-2 border-dashed border-pastel-accent flex flex-col justify-center items-center p-8 text-center card-hover">
+                    <div class="w-16 h-16 bg-pastel-accent rounded-full flex items-center justify-center text-white text-3xl mb-4">
+                        <i class="fa-solid fa-gift"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-pastel-navy mb-2 font-cursive">¿Listo para pedir?</h3>
+                    <p class="text-pastel-navy/70 text-sm mb-6">Personalizamos colores, sabores y temáticas para tu evento.</p>
+                    <a href="#contacto" class="text-pastel-accent font-bold underline hover:text-sky-500">Contáctanos ahora</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Contacto / Footer -->
+    <footer id="contacto" class="bg-pastel-navy text-pastel-light pt-16 pb-8 mt-auto rounded-t-[3rem]">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <i class="fa-solid fa-envelope-open-heart text-5xl text-pastel-accent mb-6"></i>
+            <h2 class="text-3xl md:text-5xl font-cursive mb-6 text-white">¡Haz tu pedido!</h2>
+            <p class="text-lg md:text-xl text-pastel-soft/90 mb-10 max-w-2xl mx-auto">
+                Para cotizaciones, disponibilidad y pedidos personalizados, mándanos un mensajito directo por Instagram. ¡Nos encantará ser parte de tu celebración!
+            </p>
+            
+            <!-- Botón de Instagram (Mantiene los colores originales de la marca para reconocimiento) -->
+            <a href="https://www.instagram.com/sweetminipostres30" target="_blank" class="inline-flex items-center justify-center gap-3 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 text-white px-8 py-4 rounded-full font-bold text-xl hover:scale-105 transition-transform shadow-lg mb-16">
+                <i class="fa-brands fa-instagram text-2xl"></i>
+                @sweetminipostres30
+            </a>
+
+            <div class="border-t border-pastel-soft/20 pt-8 mt-8 flex flex-col md:flex-row justify-between items-center text-sm text-pastel-soft/60">
+                <p>&copy; <span id="year"></span> Sweet Mini Postres. Todos los derechos reservados.</p>
+                <p class="mt-4 md:mt-0 font-cursive text-lg">Hecho con un <i class="fa-solid fa-heart text-pastel-accent"></i> en Tijuana</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Actualizar el año en el footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Lógica del menú móvil
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const menuLinks = menu.querySelectorAll('a');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Cerrar menú móvil al hacer clic en un enlace
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
